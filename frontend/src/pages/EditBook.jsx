@@ -57,7 +57,7 @@ const EditBook = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="p-5 border-2 border-sky-800 rounded-xl w-[600px] mx-auto max-md:w-[400px]">
+        <div className="p-5 border-2 border-sky-800 rounded-xl w-[600px] mx-auto max-md:w-[350px]">
           <form
             onSubmit={(e) => {
               e.preventDefault();
