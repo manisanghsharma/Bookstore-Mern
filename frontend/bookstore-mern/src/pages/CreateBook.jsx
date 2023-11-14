@@ -13,7 +13,7 @@ const CreateBook = () => {
   const navigate = useNavigate();
   const {enqueueSnackbar} = useSnackbar(); 
 
-  const apiUrl = "http://localhost:5555/books";
+  const apiUrl = "https://bookstore-mern-2tp3.onrender.com/books";
   const data = { title, author, publishYear };
   const handleCreate = async () => {
     try {
@@ -31,7 +31,7 @@ const CreateBook = () => {
   return (
     <div className="p-4">
       <BackButton /> 
-      <h1 className="text-3xl py-5 px-2">Create Book</h1>
+      <h1 className="px-2 py-5 text-3xl">Create Book</h1>
       {loading ? (
         <Spinner />
       ) : (
@@ -52,7 +52,7 @@ const CreateBook = () => {
               placeholder="Enter Title..."
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="border-2 border-black outline-none p-2 text-xl mb-8 rounded-md"
+              className="p-2 mb-8 text-xl border-2 border-black rounded-md outline-none"
             />
             <label htmlFor="author" className="text-2xl text-gray-600">
               Author
@@ -63,7 +63,7 @@ const CreateBook = () => {
               placeholder="Enter Author..."
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
-              className="border-2 border-black outline-none p-2 text-xl mb-8 rounded-md"
+              className="p-2 mb-8 text-xl border-2 border-black rounded-md outline-none"
             />
             <label htmlFor="publishYear" className="text-2xl text-gray-600">
               Publish Year
@@ -74,9 +74,9 @@ const CreateBook = () => {
               placeholder="Enter Publish Year..."
               value={publishYear}
               onChange={(e) => setPublishYear(e.target.value)}
-              className="border-2 border-black outline-none p-2 text-xl mb-8 rounded-md"
+              className="p-2 mb-8 text-xl border-2 border-black rounded-md outline-none"
             />
-            <button className="mx-8 my-3 py-3 border-2 bg-sky-600 outline-none border-none rounded-md text-white text-xl">
+            <button className="py-3 mx-8 my-3 text-xl text-white border-2 border-none rounded-md outline-none bg-sky-600">
               Submit
             </button>
           </form>

@@ -9,7 +9,7 @@ const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const navigate = useNavigate();
-  const apiUrl = `http://localhost:5555/books/${id}`;
+  const apiUrl = `https://bookstore-mern-2tp3.onrender.com/books/${id}`;
   const { enqueueSnackbar } = useSnackbar();
   const handleDelete = async () => {
     try {
@@ -30,15 +30,15 @@ const DeleteBook = () => {
   return (
     <div className="p-5">
       <BackButton />
-      <h1 className="text-2xl my-5">Delete Book</h1>
+      <h1 className="my-5 text-2xl">Delete Book</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div className="flex flex-col gap-5 justify-center p-7 border-2 border-sky-800 rounded-xl mx-auto w-fit">
+        <div className="flex flex-col justify-center gap-5 mx-auto border-2 p-7 border-sky-800 rounded-xl w-fit">
           <p className="text-2xl">Are you sure you want to delete this book?</p>
           <button
             onClick={handleDelete}
-            className="bg-red-500 text-white text-lg outline-none rounded-lg mx-8 py-2"
+            className="py-2 mx-8 text-lg text-white bg-red-500 rounded-lg outline-none"
           >
             Confirm Delete
           </button>

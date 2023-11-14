@@ -11,7 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState(JSON.parse(localStorage.getItem('displayType')) || "table");
 
-  const apiUrl = "http://localhost:5555/books";
+  const apiUrl = "https://bookstore-mern-2tp3.onrender.com/books";
 
   useEffect(() => {
     const fetchBooks = async () => {
