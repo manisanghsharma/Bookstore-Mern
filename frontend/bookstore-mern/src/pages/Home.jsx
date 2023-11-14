@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import Spinner from "../components/Spinner";
 import BooksCard from "../home/BooksCard";
@@ -9,7 +9,7 @@ import BooksTable from "../home/BooksTable";
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showType, setShowType] = useState("card");
+  const [showType, setShowType] = useState(JSON.parse(localStorage.getItem('displayType')) || "table");
 
   const apiUrl = "http://localhost:5555/books";
 
@@ -32,29 +32,29 @@ const Home = () => {
   return (
     <div className="p-4">
       <div>
-        <div className="flex justify-center items-center p-4">
+        <div className="flex items-center justify-center p-4">
           <button
             onClick={() => {
-               setShowType("table");
-               localStorage.setItem('displayType', JSON.stringify(showType));
+              setShowType("table");
+              localStorage.setItem("displayType", JSON.stringify('table'));
             }}
-            className="bg-sky-600 hover:bg-sky-700 text-white text-xl px-6 py-1 rounded-md mx-2"
+            className="px-6 py-1 mx-2 text-xl text-white rounded-md bg-sky-600 hover:bg-sky-700"
           >
             Table
           </button>
           <button
             onClick={() => {
               setShowType("card");
-              localStorage.setItem('displayType', JSON.stringify(showType));
+              localStorage.setItem("displayType", JSON.stringify('card'));
             }}
-            className="bg-sky-600 hover:bg-sky-700 text-white text-xl px-6 py-1 rounded-md mx-2"
+            className="px-6 py-1 mx-2 text-xl text-white rounded-md bg-sky-600 hover:bg-sky-700"
           >
             Card
           </button>
         </div>
-        <h1 className="text-3xl my-8">Book List</h1>
+        <h1 className="my-8 text-3xl">Book List</h1>
         <Link to="/books/create">
-          <MdOutlineAddBox className="text-sky-800 text-4xl" />
+          <MdOutlineAddBox className="text-4xl text-sky-800" />
         </Link>
       </div>
 
