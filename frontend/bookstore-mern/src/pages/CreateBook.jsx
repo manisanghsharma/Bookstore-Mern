@@ -1,8 +1,9 @@
 import BackButton from "../components/BackButton";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
+import { useSnackbar } from "notistack";
 
 const CreateBook = () => {
   const [title, setTitle] = useState("");
@@ -10,26 +11,26 @@ const CreateBook = () => {
   const [publishYear, setPublishYear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const {enqueueSnackbar} = useSnackbar(); 
 
   const apiUrl = "http://localhost:5555/books";
   const data = { title, author, publishYear };
-
   const handleCreate = async () => {
     try {
       setLoading(true);
       await axios.post(apiUrl, data);
       navigate("/");
+      enqueueSnackbar('Book Created Successfully', {variant: 'success'});
     } catch (err) {
       console.log(err.message);
-      alert("An error happened, please check in console");
+      enqueueSnackbar(`Error: ${err.message}`, { variant: "error" });
     } finally{
       setLoading(false);
     }
   };
-
   return (
     <div className="p-4">
-      <BackButton />
+      <BackButton /> 
       <h1 className="text-3xl py-5 px-2">Create Book</h1>
       {loading ? (
         <Spinner />
@@ -82,6 +83,7 @@ const CreateBook = () => {
         </div>
       )}
     </div>
+    
   );
 };
 export default CreateBook;

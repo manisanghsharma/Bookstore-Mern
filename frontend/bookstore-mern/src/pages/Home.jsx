@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, json } from "react-router-dom";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import Spinner from "../components/Spinner";
 import BooksCard from "../home/BooksCard";
@@ -9,7 +9,7 @@ import BooksTable from "../home/BooksTable";
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showType, setShowType] = useState("table");
+  const [showType, setShowType] = useState("card");
 
   const apiUrl = "http://localhost:5555/books";
 
@@ -34,13 +34,19 @@ const Home = () => {
       <div>
         <div className="flex justify-center items-center p-4">
           <button
-            onClick={() => setShowType("table")}
+            onClick={() => {
+               setShowType("table");
+               localStorage.setItem('displayType', JSON.stringify(showType));
+            }}
             className="bg-sky-600 hover:bg-sky-700 text-white text-xl px-6 py-1 rounded-md mx-2"
           >
             Table
           </button>
           <button
-            onClick={() => setShowType("card")}
+            onClick={() => {
+              setShowType("card");
+              localStorage.setItem('displayType', JSON.stringify(showType));
+            }}
             className="bg-sky-600 hover:bg-sky-700 text-white text-xl px-6 py-1 rounded-md mx-2"
           >
             Card
