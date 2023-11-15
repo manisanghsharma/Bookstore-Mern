@@ -13,7 +13,7 @@ const CreateBook = () => {
   const navigate = useNavigate();
   const {enqueueSnackbar} = useSnackbar(); 
 
-  const apiUrl = "https://bookstore-mern-2tp3.onrender.com/books";
+  const apiUrl = `${import.meta.env.VITE_API_URL}/books`;
   const data = { title, author, publishYear };
   const handleCreate = async () => {
     try {

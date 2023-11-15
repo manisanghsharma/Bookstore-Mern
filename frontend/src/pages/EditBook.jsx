@@ -14,7 +14,7 @@ const EditBook = () => {
   const { id } = useParams();
   const {enqueueSnackbar} = useSnackbar();
 
-  const apiUrl = `https://bookstore-mern-2tp3.onrender.com/books/${id}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}/books/${id}`;
   const data = { title, author, publishYear };
 
   useEffect(() => {

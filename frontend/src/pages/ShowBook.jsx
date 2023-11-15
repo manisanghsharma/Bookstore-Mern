@@ -9,7 +9,7 @@ const ShowBook = () => {
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
-  const apiUrl = `https://bookstore-mern-2tp3.onrender.com/books/${id}`;
+  const apiUrl = `${import.meta.env.VITE_API_URL}/books/${id}`;
 
   useEffect(() => {
     const showBook = async () => {

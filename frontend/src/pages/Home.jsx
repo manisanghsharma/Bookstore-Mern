@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
+import { MdOutlineAddBox} from "react-icons/md";
 import Spinner from "../components/Spinner";
 import BooksCard from "../home/BooksCard";
 import BooksTable from "../home/BooksTable";
@@ -11,7 +11,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState(JSON.parse(localStorage.getItem('displayType')) || "table");
 
-  const apiUrl = "https://bookstore-mern-2tp3.onrender.com/books";
+  const apiUrl = `${import.meta.env.VITE_API_URL}/books`;
 
   useEffect(() => {
     const fetchBooks = async () => {
