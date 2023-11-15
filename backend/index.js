@@ -23,7 +23,7 @@ app.use("/books", booksRoute);
 
 const connectDatabase = async() => {
     try{
-        await mongoose.connect(process.env.mongodbURL);
+        await mongoose.connect(process.env.MONGODB_URL);
         console.log("Connected To Database");
         app.listen(process.env.PORT, () => {
           console.log(`App is Listening on Port: ${process.env.PORT}`);
